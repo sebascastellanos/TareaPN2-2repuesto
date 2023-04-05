@@ -43,7 +43,7 @@ function App() {
       <header className="App-header">
        
         
-        <div>
+        <div >
           <form onSubmit={agregarCurso}>
             <input
               type="text"

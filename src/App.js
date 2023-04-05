@@ -16,15 +16,14 @@ function App() {
   const agregarCurso = (evento) => {
     evento.preventDefault();
     const id = cursos.length + 1;
-
-      if (cursos.some((curso) => curso.text === nuevoCurso)) {
-         alert('Este curso ya está en la lista');
-         setNuevoCurso('');
-      } 
-      else {
-      setCourses([...cursos, { id, text: nuevoCurso }]);
+    if (cursos.some((curso) => curso.text === nuevoCurso)) {
+      alert('Este curso ya está en la lista');
       setNuevoCurso('');
-  }
+   } 
+   else {
+   setCourses([...cursos, { id, text: nuevoCurso }]);
+   setNuevoCurso('');
+}
   };
 
   const eliminarCurso = (id) => {
@@ -47,6 +46,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+       
         
         <div >
           <form onSubmit={agregarCurso}>

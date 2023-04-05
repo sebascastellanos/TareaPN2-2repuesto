@@ -11,6 +11,7 @@ function App() {
     { id: 4, text: 'Programacion' },
   ]);
 
+  const [nuevoID, setNuevoID] = useState('');
   const [nuevoCurso, setNuevoCurso] = useState('');
 
   const agregarCurso = (evento) => {
@@ -21,8 +22,13 @@ function App() {
          alert('Este curso ya está en la lista');
          setNuevoCurso('');
       } 
+      else if (cursos.some((curso) => curso.id === nuevoID)) {
+        alert('Este ID ya está en la lista');
+        setNuevoCurso('');
+     } 
       else {
-      setCourses([...cursos, { id, text: nuevoCurso }]);
+      setCourses([...cursos, { id: nuevoID , text: nuevoCurso }]);
+      setNuevoID('');
       setNuevoCurso('');
   }
   };
@@ -50,6 +56,11 @@ function App() {
         
         <div >
           <form onSubmit={agregarCurso}>
+            <input
+              type="text"
+              value={nuevoID}
+              onChange={(evento) => setNuevoID(evento.target.value)}
+            />
             <input
               type="text"
               value={nuevoCurso}

@@ -5,10 +5,10 @@ import './App.css';
 
 function App() {
   const [cursos, setCourses] = useState([
-    { id: 1, text: 'Calculo' },
-    { id: 2, text: 'Fisica' },
-    { id: 3, text: 'Ingles' },
-    { id: 4, text: 'Programacion' },
+    { id: 1001, text: 'Calculo' },
+    { id: 1002, text: 'Fisica' },
+    { id: 1003, text: 'Ingles' },
+    { id: 1004, text: 'Programacion' },
   ]);
 
   const [nuevoCurso, setNuevoCurso] = useState('');
@@ -49,6 +49,14 @@ function App() {
        
         
         <div >
+        <form onSubmit={agregarCurso}>
+            <input
+              type="text"
+              value={nuevoCurso}
+              onChange={(evento) => setNuevoCurso(evento.target.value)}
+            />
+            <button type="submit">Agregar</button>
+          </form>
           <form onSubmit={agregarCurso}>
             <input
               type="text"

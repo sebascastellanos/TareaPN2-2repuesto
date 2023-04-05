@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -41,7 +40,7 @@ function App() {
           LISTA DE CURSOS
         </p>
         
-        <div>
+        <div>  
         <table>
             <thead>
               <tr>
@@ -59,7 +58,9 @@ function App() {
         </div>
       </header>
     </div>
+    
   );
 }
+
 
 export default App;

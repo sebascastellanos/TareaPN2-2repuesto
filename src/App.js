@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -10,12 +11,20 @@ function App() {
     { id: 4, text: 'Programacion' },
   ]);
 
-  
-  const Eliminar = (id) => {
+  const [nuevoCurso, setNuevoCurso] = useState('');
+
+  const agregarCurso = (evento) => {
+    evento.preventDefault();
+    const id = cursos.length + 1;
+    setCourses([...cursos, { id, text: nuevoCurso }]);
+    
+    setNuevoCurso('');
+  };
+
+  const eliminarCurso = (id) => {
     const actualizarCursos = cursos.filter((curso) => curso.id !== id);
     setCourses(actualizarCursos);
   };
-
 
   const Items = ({ curso }) => {
     return (
@@ -23,29 +32,30 @@ function App() {
         <td>{curso.id}</td>
         <td>{curso.text}</td>
         <td>
-          <button onClick={() => Eliminar(curso.id)}>Eliminar</button>
+          <button onClick={() => eliminarCurso(curso.id)}>Eliminar</button>
         </td>
       </tr>
     );
   };
-  
-  
- 
-  
 
   return (
     <div className="App">
       <header className="App-header">
-        
-        <p>
-          LISTA DE CURSOS
-        </p>
+       
         
         <div>
-        <table>
+          <form onSubmit={agregarCurso}>
+            <input
+              type="text"
+              value={nuevoCurso}
+              onChange={(evento) => setNuevoCurso(evento.target.value)}
+            />
+            <button type="submit">Agregar</button>
+          </form>
+          <table>
             <thead>
               <tr>
-                <th>Id Del Curso</th>
+                <th>ID</th>
                 <th>Curso</th>
                 <th>Acciones</th>
               </tr>

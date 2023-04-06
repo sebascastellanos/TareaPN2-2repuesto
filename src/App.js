@@ -68,7 +68,7 @@ function App() {
               value={nuevoCurso}
               onChange={(evento) => setNuevoCurso(evento.target.value)}
             />
-            <button type="submit">Agregar</button>
+            <button id = 'boton1' type="submit">Agregar</button>
           </form>
           <table>
             <thead>

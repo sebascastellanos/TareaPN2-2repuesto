@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [cursos, setCourses] = useState([
+  const [cursos, setCursos] = useState([
     { id: 1, text: 'Calculo' },
     { id: 2, text: 'Fisica' },
     { id: 3, text: 'Ingles' },
@@ -26,7 +26,7 @@ function App() {
      setNuevoID('');
   } 
    else {
-   setCourses([...cursos, { id: nuevoID , text: nuevoCurso }]);
+   setCursos([...cursos, { id: nuevoID , text: nuevoCurso }]);
    setNuevoCurso('');
    setNuevoID('');
 
@@ -35,7 +35,7 @@ function App() {
 
   const eliminarCurso = (id) => {
     const actualizarCursos = cursos.filter((curso) => curso.id !== id);
-    setCourses(actualizarCursos);
+    setCursos(actualizarCursos);
   };
 
   const Items = ({ curso }) => {

@@ -5,17 +5,28 @@ import './App.css';
 
 function App() {
   const [cursos, setCourses] = useState([
-    { id: 1001, text: 'Calculo' },
-    { id: 1002, text: 'Fisica' },
-    { id: 1003, text: 'Ingles' },
-    { id: 1004, text: 'Programacion' },
+    { id: 1, text: 'Calculo' },
+    { id: 2, text: 'Fisica' },
+    { id: 3, text: 'Ingles' },
+    { id: 4, text: 'Programacion' },
   ]);
 
+  const [nuevoID, setNuevoID] = useState('');
   const [nuevoCurso, setNuevoCurso] = useState('');
 
   const agregarCurso = (evento) => {
-    
-
+    if (cursos.some((curso) => curso.text === nuevoCurso)) {
+      alert('Este curso ya está en la lista');
+      setNuevoCurso('');
+   } 
+   else if (cursos.some((curso) => curso.id === nuevoID)) {
+     alert('Este ID ya está en la lista');
+     setNuevoCurso('');
+  } 
+   else {
+   setCourses([...cursos, { id: nuevoID , text: nuevoCurso }]);
+   setNuevoID('');
+   }
   };
 
   const eliminarCurso = (id) => {
@@ -41,15 +52,13 @@ function App() {
        
         
         <div >
-        <form onSubmit={agregarCurso}>
+        
+          <form onSubmit={agregarCurso}>
             <input
               type="text"
-              value={nuevoCurso}
-              onChange={(evento) => setNuevoCurso(evento.target.value)}
+              value={nuevoID}
+              onChange={(evento) => setNuevoID(evento.target.value)}
             />
-            <button type="submit">Agregar</button>
-          </form>
-          <form onSubmit={agregarCurso}>
             <input
               type="text"
               value={nuevoCurso}

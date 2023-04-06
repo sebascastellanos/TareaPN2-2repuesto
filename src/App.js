@@ -15,17 +15,21 @@ function App() {
   const [nuevoCurso, setNuevoCurso] = useState('');
 
   const agregarCurso = (evento) => {
+    evento.preventDefault();
+    const id = cursos.length + 1;
     if (cursos.some((curso) => curso.text === nuevoCurso)) {
       alert('Este curso ya está en la lista');
       setNuevoCurso('');
    } 
    else if (cursos.some((curso) => curso.id === nuevoID)) {
      alert('Este ID ya está en la lista');
-     setNuevoCurso('');
+     setNuevoID('');
   } 
    else {
    setCourses([...cursos, { id: nuevoID , text: nuevoCurso }]);
+   setNuevoCurso('');
    setNuevoID('');
+
    }
   };
 
